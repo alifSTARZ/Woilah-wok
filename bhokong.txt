@@ -1,4 +1,3 @@
-
 shared.LoaderTitle = "White Hat hub - Indonesian script";
 shared.LoaderKeyFrames = {
     [1] = {
@@ -57,6 +56,697 @@ local v3 = {
 function TweenObject(v178, v179, v180)
     game.TweenService:Create(v178, TweenInfo.new(v179, Enum.EasingStyle.Linear, Enum.EasingDirection.InOut), v180):Play();
 end
+function CreateObject(v181, v182)
+    local v183 = Instance.new(v181);
+    local v184;
+    for v416, v417 in pairs(v182) do
+        if (v416 ~= "Parent") then
+            v183[v416] = v417;
+        else
+            v184 = v417;
+        end
+    end
+    v183.Parent = v184;
+    return v183;
+end
+local function v4(v186, v187)
+    local v188 = Instance.new("UICorner");
+    v188.CornerRadius = UDim.new(0, v186);
+    v188.Parent = v187;
+end
+local v5 = CreateObject("ScreenGui", {
+    Name = "Core",
+    Parent = game.CoreGui
+});
+local v6 = CreateObject("Frame", {
+    Name = "Main",
+    Parent = v5,
+    BackgroundColor3 = v2.LoaderData.Colors.Main,
+    BorderSizePixel = 0,
+    ClipsDescendants = true,
+    Position = UDim2.new(0.5, 0, 0.5, 0),
+    AnchorPoint = Vector2.new(0.5, 0.5),
+    Size = UDim2.new(0, 0, 0, 0)
+});
+v4(12, v6);
+local v7 = CreateObject("ImageLabel", {
+    Name = "UserImage",
+    Parent = v6,
+    BackgroundTransparency = 1,
+    Image = "rbxassetid://77996083279350",
+    Position = UDim2.new(0, 15, 0, 10),
+    Size = UDim2.new(0, 55, 0, 55)
+});
+v4(25, v7);
+local v8 = CreateObject("TextLabel", {
+    Name = "UserName",
+    Parent = v6,
+    BackgroundTransparency = 1,
+    Text = "Welcome to the script | TO CLAN TOP",
+    Position = UDim2.new(0, 75, 0, 10),
+    Size = UDim2.new(0, 200, 0, 50),
+    Font = Enum.Font.GothamBold,
+    TextColor3 = v2.LoaderData.Colors.Title,
+    TextSize = 14,
+    TextXAlignment = Enum.TextXAlignment.Left
+});
+local v9 = CreateObject("TextLabel", {
+    Name = "Top",
+    TextTransparency = 1,
+    Parent = v6,
+    BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+    BackgroundTransparency = 1,
+    Position = UDim2.new(0, 30, 0, 70),
+    Size = UDim2.new(0, 301, 0, 20),
+    Font = Enum.Font.Gotham,
+    Text = "Loader",
+    TextColor3 = v2.LoaderData.Colors.Topic,
+    TextSize = 10,
+    TextXAlignment = Enum.TextXAlignment.Left
+});
+local v10 = CreateObject("TextLabel", {
+    Name = "Title",
+    Parent = v6,
+    TextTransparency = 1,
+    BackgroundColor3 = Color3.fromRGB(255, 255, 255),
+    BackgroundTransparency = 1,
+    Position = UDim2.new(0, 30, 0, 90),
+    Size = UDim2.new(0, 301, 0, 46),
+    Font = Enum.Font.Gotham,
+    RichText = true,
+    Text = "<b>" .. v2.LoaderData.Name .. "</b>",
+    TextColor3 = v2.LoaderData.Colors.Title,
+    TextSize = 14,
+    TextXAlignment = Enum.TextXAlignment.Left
+});
+local v11 = CreateObject("Frame", {
+    Name = "BG",
+    Parent = v6,
+    AnchorPoint = Vector2.new(0.5, 0),
+    BackgroundTransparency = 1,
+    BackgroundColor3 = v2.LoaderData.Colors.LoaderBackground,
+    BorderSizePixel = 0,
+    Position = UDim2.new(0.5, 0, 0, 70),
+    Size = UDim2.new(0.8500000238418579, 0, 0, 24)
+});
+v4(8, v11);
+local v12 = CreateObject("Frame", {
+    Name = "Progress",
+    Parent = v11,
+    BackgroundColor3 = v2.LoaderData.Colors.LoaderSplash,
+    BackgroundTransparency = 1,
+    BorderSizePixel = 0,
+    Size = UDim2.new(0, 0, 0, 24)
+});
+v4(8, v12);
+local v13 = CreateObject("TextLabel", {
+    Name = "StepLabel",
+    Parent = v6,
+    BackgroundTransparency = 1,
+    Position = UDim2.new(0.5, 0, 1, - 25),
+    Size = UDim2.new(1, - 20, 0, 20),
+    Font = Enum.Font.Gotham,
+    Text = "",
+    TextColor3 = v2.LoaderData.Colors.Topic,
+    TextSize = 14,
+    TextXAlignment = Enum.TextXAlignment.Center,
+    AnchorPoint = Vector2.new(0.5, 0.5)
+});
+function UpdateStepText(v191)
+    v13.Text = v3[v191] or "" ;
+end
+function UpdatePercentage(v193, v194)
+    TweenObject(v12, 0.5, {
+        Size = UDim2.new(v193 / 100, 0, 0, 24)
+    });
+    UpdateStepText(v194);
+end
+TweenObject(v6, 0.25, {
+    Size = UDim2.new(0, 346, 0, 121)
+});
+wait();
+TweenObject(v9, 0.5, {
+    TextTransparency = 0
+});
+TweenObject(v10, 0.5, {
+    TextTransparency = 0
+});
+TweenObject(v11, 0.5, {
+    BackgroundTransparency = 0
+});
+TweenObject(v12, 0.5, {
+    BackgroundTransparency = 0
+});
+for v195, v196 in pairs(v2.Keyframes) do
+    wait(v196[1]);
+    UpdatePercentage(v196[2], v195);
+end
+UpdatePercentage(100, 4);
+TweenObject(v9, 0.5, {
+    TextTransparency = 1
+});
+TweenObject(v10, 0.5, {
+    TextTransparency = 1
+});
+TweenObject(v11, 0.5, {
+    BackgroundTransparency = 1
+});
+TweenObject(v12, 0.5, {
+    BackgroundTransparency = 1
+});
+wait(0.5);
+TweenObject(v6, 0.25, {
+    Size = UDim2.new(0, 0, 0, 0)
+});
+wait(0.25);
+v5:Destroy();
+
+  wait(0.27)
+local TweenService = game:GetService("TweenService")
+local Players = game:GetService("Players")
+local Lighting = game:GetService("Lighting")
+local player = Players.LocalPlayer
+local gui = Instance.new("ScreenGui", player:WaitForChild("PlayerGui"))
+gui.ResetOnSpawn = false
+gui.Name = "FancyNotificationGui"
+
+local blur = Instance.new("BlurEffect")
+blur.Size = 0
+blur.Parent = Lighting
+
+local messages = {
+    "LFERDA HUB Script",
+    "LFERDA your uncle burning your blood",
+    "The best killer",
+    "Soon it will activate, reset for precaution"
+}
+
+local function showNotification(text, imageId)
+    local frame = Instance.new("Frame")
+    frame.Size = UDim2.new(0.1, 0, 0.1, 0)
+    frame.Position = UDim2.new(0.5, 0, 1.2, 0)
+    frame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+    frame.BackgroundTransparency = 0.1
+    frame.BorderSizePixel = 0
+    frame.AnchorPoint = Vector2.new(0.5, 1)
+    frame.Parent = gui
+    frame.ClipsDescendants = true
+
+    local uicorner = Instance.new("UICorner", frame)
+    uicorner.CornerRadius = UDim.new(0, 12)
+
+    local shadow = Instance.new("UIStroke", frame)
+    shadow.Color = Color3.fromRGB(255, 255, 255)
+    shadow.Thickness = 1
+    shadow.Transparency = 0.7
+
+    local img = Instance.new("ImageLabel", frame)
+    img.Image = imageId
+    img.Size = UDim2.new(0, 60, 0, 60)
+    img.Position = UDim2.new(0, 10, 0.5, -30)
+    img.BackgroundTransparency = 1
+
+    local circle = Instance.new("UICorner", img)
+    circle.CornerRadius = UDim.new(1, 0)
+
+    local txt = Instance.new("TextLabel", frame)
+    txt.Text = text
+    txt.Size = UDim2.new(1, -80, 1, -20)
+    txt.Position = UDim2.new(0, 80, 0, 10)
+    txt.BackgroundTransparency = 1
+    txt.TextColor3 = Color3.fromRGB(255, 220, 255)
+    txt.TextStrokeTransparency = 0.5
+    txt.TextWrapped = true
+    txt.TextScaled = true
+    txt.Font = Enum.Font.FredokaOne
+
+    TweenService:Create(blur, TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Size = 12}):Play()
+
+    local tweenIn = TweenService:Create(frame, TweenInfo.new(0.4, Enum.EasingStyle.Back, Enum.EasingDirection.Out), {
+        Size = UDim2.new(0.4, 0, 0.12, 0),
+        Position = UDim2.new(0.5, 0, 0.85, 0)
+    })
+    tweenIn:Play()
+    tweenIn.Completed:Wait()
+
+    wait(0.28)
+
+    local tweenOut = TweenService:Create(frame, TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {
+        Position = UDim2.new(0.5, 0, 1.3, 0),
+        Size = UDim2.new(0.1, 0, 0.1, 0)
+    })
+    TweenService:Create(blur, TweenInfo.new(0.4), {Size = 0}):Play()
+    tweenOut:Play()
+    tweenOut.Completed:Wait()
+
+    frame:Destroy()
+end
+
+coroutine.wrap(function()
+    for _, msg in ipairs(messages) do
+        showNotification(msg, "rbxassetid://115881843808544")
+        wait(0.30)
+    end
+end)()
+
+  wait(0.32)
+  
+local Sound = Instance.new("Sound", game:GetService("SoundService"));
+Sound.SoundId = "rbxassetid://";
+Sound:Play();
+
+game.Players.LocalPlayer.Character.Humanoid.Health = 0
+wait(0.1)
+game.StarterGui:SetCore("SendNotification", {
+    Title = "White Hat hub - Indonesian script";
+    Text = "Activated successfully"; -- ARAB TEAM
+    Duration = 5;
+})
+game:GetService("ReplicatedStorage").RE["1RPNam1eTex1t"]:FireServer("RolePlayName", "White Hat hub - Indonesian script")
+
+local args = {
+    [1] = "PickingRPNameColor",
+    [2] = Color3.fromRGB(255, 0, 0), -- Yellow
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("RE"):WaitForChild("1RPNam1eColo1r"):FireServer(unpack(args))
+
+local args = {
+    [1] = "RolePlayBio",
+    [2] ="LFERDA ON TOP"
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("RE"):WaitForChild("1RPNam1eTex1t"):FireServer(unpack(args))
+
+local args = {
+    [1] = "PickingRPBioColor",
+    [2] = Color3.fromRGB(0, 0, 0), -- Blue
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("RE"):WaitForChild("1RPNam1eColo1r"):FireServer(unpack(args))
+wait(0.5)
+game.StarterGui:SetCore("SendNotification", {
+    Title = "Thanks for using the script";
+    Text = "CLAN TO TOP"; -- ARAB TEAM
+    Duration = 5;
+})
+
+local redzlib = loadstring(game:HttpGet("https://raw.githubusercontent.com/A-IDK313/Hub.Script313/refs/heads/main/Redzhubui.txt"))()
+
+local Window = redzlib:MakeWindow({
+  Title = "White Hat hub - Indonesian script   |   V0.9",
+  SubTitle = "Made By : AlrecT",
+  SaveFolder = "MT3ATI 1 Config"
+})
+
+Window:AddMinimizeButton({
+    Button = { Image = "rbxassetid://77996083279350", BackgroundTransparency = 0 },
+    Corner = { CornerRadius = UDim.new(35, 1) },
+})
+
+local Tab = Window:MakeTab({"Information"})
+local Section = Tab:AddSection({
+	Name = "Welcome everyone"
+})
+
+local Section = Tab:AddSection({
+	Name = "Clan members:"
+})
+
+local Section = Tab:AddSection({
+	Name = "LFERDA"
+})
+
+local Section = Tab:AddSection({
+	Name = "PAPLO"
+})
+
+local Section = Tab:AddSection({
+	Name = "MT3ATI"
+})
+
+local Section = Tab:AddSection({
+	Name = "AHMAD"
+})
+
+local Section = Tab:AddSection({
+	Name = "ARTHUR"
+})
+
+local Section = Tab:AddSection({
+	Name = "BLE"
+})
+
+local Section = Tab:AddSection({
+	Name = "HASSAN"
+})
+
+local Tab = Window:MakeTab({"Server"})
+
+Tab:AddButton({
+    Name = "Random server",
+    Description = "Click to enter a random server",
+    Callback = function()
+        local PlaceID = game.PlaceId
+        local AllIDs = {}
+        local foundAnything = ""
+        local actualHour = os.date("!*t").hour
+        local Deleted = false
+        local File = pcall(function()
+            AllIDs = game:GetService('HttpService'):JSONDecode(readfile("NotSameServers.json"))
+        end)
+        if not File then
+            table.insert(AllIDs, actualHour)
+            writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
+        end
+        function TPReturner()
+            local Site;
+            if foundAnything == "" then
+                Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
+            else
+                Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
+            end
+            local ID = ""
+            if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
+                foundAnything = Site.nextPageCursor
+            end
+            local num = 0;
+            for i,v in pairs(Site.data) do
+                local Possible = true
+                ID = tostring(v.id)
+                if tonumber(v.maxPlayers) > tonumber(v.playing) then
+                    for _,Existing in pairs(AllIDs) do
+                        if num ~= 0 then
+                            if ID == tostring(Existing) then
+                                Possible = false
+                            end
+                        else
+                            if tonumber(actualHour) ~= tonumber(Existing) then
+                                local delFile = pcall(function()
+                                    delfile("NotSameServers.json")
+                                    AllIDs = {}
+                                    table.insert(AllIDs, actualHour)
+                                end)
+                            end
+                        end
+                        num = num + 1
+                    end
+                    if Possible == true then
+                        table.insert(AllIDs, ID)
+                        wait()
+                        pcall(function()
+                            writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
+                            wait()
+                            game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
+                        end)
+                        wait(4)
+                    end
+                end
+            end
+        end
+        
+        function Teleport()
+            while wait() do
+                pcall(function()
+                    TPReturner()
+                    if foundAnything ~= "" then
+                        TPReturner()
+                    end
+                end)
+            end
+        end
+        Teleport()
+    end
+})
+
+Tab:AddButton({
+    Name = "Re-enter server",
+    Description = "Click to re-enter the server",
+    Callback = function()
+        local TeleportService = game:GetService("TeleportService")
+        local Players = game:GetService("Players")
+        local LocalPlayer = Players.LocalPlayer
+        
+        TeleportService:TeleportToPlaceInstance(game.PlaceId, game.JobId, LocalPlayer)
+    end
+})
+
+Tab:AddButton({
+    Name = "Exit map",
+    Description = "Click to exit the map",
+    Callback = function()
+        game:Shutdown()
+    end
+})
+
+local Section = Tab:AddSection({"Other settings"})
+
+Tab:AddButton({
+    Name = "Open Console",
+    Description = "Click here to open the Console",
+    Callback = function()
+        game.StarterGui:SetCore("DevConsoleVisible", true)
+        wait()
+    end
+})
+
+-- Global variable to track notification state
+_G.NotificationsEnabled = true 
+
+-- Function to show notification if enabled
+local function ShowNotification(title, text, duration)
+    if _G.NotificationsEnabled then
+        game:GetService("StarterGui"):SetCore("SendNotification", {
+            Title = title,
+            Text = text,
+            Duration = duration or 3
+        })
+    end
+end
+
+-- Handle player joining
+game.Players.PlayerAdded:Connect(function(player)
+    ShowNotification(
+        "Joined:",
+        player.Name .. ""
+    )
+end)
+
+-- Handle player leaving 
+game.Players.PlayerRemoving:Connect(function(player)
+    ShowNotification(
+        "Left:",
+        player.Name .. ""
+    )
+end)
+
+local Toggle1 = Tab:AddToggle({
+  Name = "Notifications for players joining and leaving",
+  Description = "When enabled, notifications for players joining and leaving will be sent",
+  Default = false 
+})
+Toggle1:Callback(function(Value)
+ _G.NotificationsEnabled = Value
+end)
+
+local Tab = Window:MakeTab({"Player"})
+
+local CoolSlider = Tab:AddSlider({
+    Name = "Player speed",
+    Min = 0,
+    Max = 1000,
+    Default = 10,
+    Color = Color3.fromRGB(255, 255, 255),
+    Increment = 1,
+    Flag = "Speed Slider",
+    ValueName = "Speed",
+    Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = Value
+    end,
+})
+
+local CoolSlider = Tab:AddSlider({
+    Name = "Jump power",
+    Min = 0,
+    Max = 1000,
+    Default = 11,
+    Color = Color3.fromRGB(255, 255, 255),
+    Increment = 1,
+    Flag = "Jump Slider",
+    ValueName = "Jump",
+    Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.JumpHeight = Value
+    end,
+})
+
+local CoolSlider = Tab:AddSlider({
+    Name = "Player gravity",
+    Min = 0,
+    Max = 1000,
+    Default = 54,
+    Color = Color3.fromRGB(255, 255, 255),
+    Increment = 1,
+    Flag = "Gravity Slider",
+    ValueName = "Gravity",
+    Callback = function(Value)
+        game.Players.LocalPlayer.PlayerGui.Gravity = Value
+    end,
+})
+
+
+
+
+
+Tab:AddSlider({
+    Name = "Increase FPS",
+    Description = "Increase FPS to maximum",
+    Min = 144,
+    Max = 1000,
+    Increase = 1,
+    Default = 1000,
+    Callback = function(Value)
+        setfpscap(Value)
+    end
+})
+
+local Toggle3 = Tab:AddToggle({
+    Name = "Click to enable FPS increase",
+    Description = "Enable or disable FPS increase",
+    Default = true,
+    Callback = function(state)
+        if state then
+            setfpscap(10000000)
+        else
+            setfpscap(144)
+        end
+    end
+})
+
+
+
+
+
+Tab:AddTextBox({
+  Name = "Screen FOV",
+  Description = "Enter the FOV number here", 
+  PlaceholderText = "Enter number here",
+  Callback = function(Value)
+    local FovNumber = Value
+local Camera = workspace.CurrentCamera
+Camera.FieldOfView = FovNumber  
+  end
+})
+
+local InfiniteJumpEnabled = false
+
+game:GetService("UserInputService").JumpRequest:Connect(function()
+    if InfiniteJumpEnabled then
+        game.Players.LocalPlayer.Character:FindFirstChildOfClass('Humanoid'):ChangeState("Jumping")
+    end
+end)
+
+local Toggle1 = Tab:AddToggle({
+    Name = "Infinite Jump",
+    Description = "Click to enable infinite jump",
+    Default = false,
+    Callback = function(state)
+        InfiniteJumpEnabled = state
+    end
+})
+
+local Toggle = Tab:AddToggle({
+  Name = "Noclip",
+  Default = false,
+  Callback = function(Value)
+    if Value == true then
+	-- Function to enable noclip for a player
+local function enableNoclip(player)
+    local character = player.Character
+    if character then
+        for _, part in pairs(character:GetDescendants()) do
+            if part:IsA("BasePart") then
+                part.CanCollide = false
+            end
+        end
+    end
+end
+
+-- Function to disable noclip for a player
+local function disableNoclip(player)
+    local character = player.Character
+    if character then
+        for _, part in pairs(character:GetDescendants()) do
+            if part:IsA("BasePart") then
+                part.CanCollide = true
+            end
+        end
+    end
+end
+
+-- Replace "PlayerName" with the name of the player you want to enable noclip for
+local player = game.Players.LocalPlayer
+
+-- Check if the player exists
+if player then
+    enableNoclip(player)
+end
+else
+-- Function to enable noclip for a player
+local function enableNoclip(player)
+    local character = player.Character
+    if character then
+        for _, part in pairs(character:GetDescendants()) do
+            if part:IsA("BasePart") then
+                part.CanCollide = false
+            end
+        end
+    end
+end
+
+-- Function to disable noclip for a player
+local function disableNoclip(player)
+    local character = player.Character
+    if character then
+        for _, part in pairs(character:GetDescendants()) do
+            if part:IsA("BasePart") then
+                part.CanCollide = true
+            end
+        end
+    end
+end
+
+-- Replace "PlayerName" with the name of the player you want to enable noclip for
+local player = game.Players.LocalPlayer
+
+-- Check if the player exists
+if player then
+    disableNoclip(player)
+end
+end
+  end
+})
+
+local Button = Tab:AddButton({
+  Name = "Remove Lag",
+  Callback = function()
+    local ToDisable = {
+	Textures = false,
+	VisualEffects = true,
+	Parts = true,
+	Particles = true,
+	Sky = true
+}
+
+local ToEnable = {
+	FullBright = false
+}
+
+local Stuff = {}
+
+for _, v in next, game:GetDescendants() do
+	if ToDisable.Parts then
+		if v:IsA("Part") or v:IsA("Union") or v:IsA("BasePart") then
+			v.Material = Enum.Materiend
 function CreateObject(v181, v182)
     local v183 = Instance.new(v181);
     local v184;
